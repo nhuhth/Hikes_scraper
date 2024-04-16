@@ -1,0 +1,44 @@
+/* Kiểu cho checkbox */
+.form-check-label {
+    cursor: pointer;
+}
+
+/* Kiểu cho nội dung ẩn */
+#hiddenContent {
+    margin-top: 10px;
+}
+
+/* Kiểu cho slider */
+#duration-slider {
+    width: 100%;
+}
+
+/* Kiểu cho button */
+#search-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Kiểu cho table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Kiểu cho input hidden */
+#min_duration,
+#max_duration {
+    display: none;
+    /* Ẩn trường input hidden */
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Thêm link tới Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/thanhTruot.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <title>Search</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Body -->
+    <div class="container mt-4">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form action="/" method="GET">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Search..." aria-label="Search" aria-describedby="search-btn">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="form-check">
+                                    <label for="toggleCheckbox">Level</label>
+                                    <input type="checkbox" id="toggleCheckbox">
+                                </div>
+                            </div>
+                            <div class="input-group">
+
+
+                                <div id="hiddenContent" style="display: none;">
+                                    <div class="form-check">
+                                        <!-- Checkbox -->
+                                        <input class="form-check-input" name="level" type="checkbox" value="Easy"
+                                            id="easy">
+                                        <!-- Label cho checkbox -->
+                                        <label class="form-check-label" for="easy">
+                                            Easy
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <!-- Checkbox -->
+                                        <input class="form-check-input" name="level" type="checkbox" value="Intermediate"
+                                            id="Intermediate">
+                                        <!-- Label cho checkbox -->
+                                        <label class="form-check-label" for="Intermediate">
+                                            Intermediate
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <!-- Checkbox -->
+                                        <input class="form-check-input" name="level" type="checkbox" value="Expert"
+                                            id="Expert">
+                                        <!-- Label cho checkbox -->
+                                        <label class="form-check-label" for="Expert">
+                                            Expert
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="ranger row">
+                                <div class="col-md-6">
+                                    <p>Choose duration range:</p>
+                                    <div id="duration-slider"></div>
+                                    <p>Selected duration range: <span id="selected-duration"></span></p>
+                                    <input type="hidden" id="min_duration" name="min_duration" value="0">
+                                    <input type="hidden" id="max_duration" name="max_duration" value="20">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Choose distance range:</p>
+                                    <div id="distance-slider"></div>
+                                    <p>Selected distance range: <span id="selected-distance"></span></p>
+                                    <input type="hidden" id="min_distance" name="min_distance" value="0">
+                                    <input type="hidden" id="max_distance" name="max_distance" value="50">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="input-group mb-3">
+                                    <button class="btn btn-bg" type="submit" id="search-btn">Search</button>
+                                </div>
+                        </form>
+                        <div class="input-group mb-3">
+                            <div class="container mt-4">
+                                <h1>Hiking Trails</h1>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Rating</th>
+                                            <th>Level</th>
+                                            <th>Duration</th>
+                                            <th>Distance</th>
+                                            <th>Height</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for trail in data %}
+                                        <tr>
+                                            <td>{{ trail[0] }}</td>
+                                            <td>{{ trail[1] }}</td>
+                                            <td>{{ trail[2] }}</td>
+                                            <td>{{ trail[3] }}</td>
+                                            <td>{{ trail[4] }}</td>
+                                            <td>{{ trail[5] }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thêm link tới Bootstrap JS và Popper.js (nếu cần) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Lấy ra checkbox và phần tử chứa nội dung cần ẩn/hiện
+            var toggleCheckbox = document.getElementById('toggleCheckbox');
+            var hiddenContent = document.getElementById('hiddenContent');
+
+            // Định nghĩa hàm xử lý sự kiện khi checkbox thay đổi trạng thái
+            function toggleContentVisibility() {
+                // Nếu checkbox được chọn, hiển thị nội dung, ngược lại ẩn nội dung
+                if (toggleCheckbox.checked) {
+                    hiddenContent.style.display = 'block';
+                } else {
+                    hiddenContent.style.display = 'none';
+                }
+            }
+
+            // Gán sự kiện onchange cho checkbox để gọi hàm toggleContentVisibility khi checkbox thay đổi trạng thái
+            toggleCheckbox.addEventListener('change', toggleContentVisibility);
+
+            // Gọi hàm toggleContentVisibility lần đầu tiên để ẩn hoặc hiện nội dung theo trạng thái ban đầu của checkbox
+            toggleContentVisibility();
+
+
+        });
+    </script>
+    <script>
+        $(function () {
+            // Khởi tạo slider với giá trị mặc định
+
+            $("#duration-slider").slider({
+                range: true,
+                min: 0,
+                max: 20, // Thay đổi giới hạn tùy theo nhu cầu của bạn
+                values: [0, 20], // Khoảng thời gian mặc định (0 - 20 phút)
+                slide: function (event, ui) {
+                    $("#selected-duration").html(ui.values[0] + " - " + ui.values[1] + " hours");
+                    $("#min_duration").val(ui.values[0]);
+                    $("#max_duration").val(ui.values[1]);
+
+                }
+            });
+            // Hiển thị giá trị ban đầu
+            $("#selected-duration").html($("#duration-slider").slider("values", 0) +
+                " - " + $("#duration-slider").slider("values", 1) + " hours");
+        });
+        $(function () {
+            // Khởi tạo slider cho trường "distance"
+            $("#distance-slider").slider({
+                range: true,
+                min: 0,
+                max: 50, // Thay đổi giới hạn tùy theo nhu cầu của bạn
+                values: [0, 50], // Phạm vi mặc định (0 - 50)
+                slide: function (event, ui) {
+                    $("#selected-distance").html(ui.values[0] + " - " + ui.values[1] + " km");
+                    $("#min_distance").val(ui.values[0]);
+                    $("#max_distance").val(ui.values[1]);
+                }
+            });
+            // Hiển thị giá trị ban đầu
+            $("#selected-distance").html($("#distance-slider").slider("values", 0) +
+                " - " + $("#distance-slider").slider("values", 1) + " km");
+        });
+    </script>
+    <script src="../static/js/thanhTruot.js"></script>
+</body>
+
+</html>
