@@ -20,7 +20,7 @@ The project structure consists of the following components:
 ├── README.md 
 ├── main.py
 ├── scrapy.cfg
-└── web_scrapper
+└── hikes_scrapper
     ├── __init__.py
     ├── items.py
     ├── middlewares.py
