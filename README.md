@@ -17,14 +17,13 @@ The project structure consists of the following components:
 
 ```bash
 .
-├── README.md 
-├── main.py
+├── README.md
+├── Project Description.ipynb
 ├── scrapy.cfg
 └── hikes_scrapper
     ├── __init__.py
     ├── items.py
     ├── middlewares.py
-    ├── Project Description.ipynb
     ├── pipelines.py
     ├── settings.py
     └── spiders
