@@ -1,5 +1,5 @@
 # Hikes_scraper Project
-
+# <div align="center"> Scraping Komoot Website for Customized Hike Suggestions</div>
 We're using Python's Scrapy, Selenium, Requests, BeautifulSoup, regex, and lambda functions to extract and manipulate hiking route details from [Komoot's Poland](https://www.komoot.com/discover/Poland/@52.2159330,19.1344220/tours?sport=hike&map=true&regionId=2486&max_distance=4.82) page.
 
 
@@ -11,24 +11,5 @@ To ensure efficient extraction and processing of data, we used Scrapy spiders to
 
 In summary, our project demonstrates our adeptness in gathering and analyzing hiking route information from online platforms, showcasing proficiency in web scraping techniques and data manipulation using Python.
 
-## Project structure
-
-The project structure consists of the following components:
-
-```bash
-.
-├── README.md
-├── Project Description.ipynb
-├── scrapy.cfg
-└── hikes_scrapper
-    ├── __init__.py
-    ├── items.py
-    ├── middlewares.py
-    ├── pipelines.py
-    ├── settings.py
-    └── spiders
-        ├── __init__.py
-        └── hiking_selenium.py
-```
 ### Description detail:
 We can see in the Project Description.ipynb file
