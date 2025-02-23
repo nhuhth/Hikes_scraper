@@ -1,15 +1,51 @@
 # Hikes_scraper Project
-# <div align="center"> Scraping Komoot Website for Customized Hike Suggestions</div>
-We're using Python's Scrapy, Selenium, Requests, BeautifulSoup, regex, and lambda functions to extract and manipulate hiking route details from [Komoot's Poland](https://www.komoot.com/discover/Poland/@52.2159330,19.1344220/tours?sport=hike&map=true&regionId=2486&max_distance=4.82) page.
 
+## <div align="center"> Scraping Komoot Website for Customized Hike Suggestions</div>
+
+This project utilizes Python's Scrapy, Selenium, Requests, BeautifulSoup, regex, and lambda functions to extract and manipulate hiking route details from [Komoot's Poland](https://www.komoot.com/discover/Poland/@52.2159330,19.1344220/tours?sport=hike&map=true&regionId=2486&max_distance=4.82) page.
 
 ## Project Introduction
 
-Our project focuses on gathering information about hiking routes from Komoot, a leading platform for outdoor enthusiasts. We used a combination of web scraping tools and libraries in Python, including Scrapy for management and automation, Selenium for interaction and navigation, and BeautifulSoup for parsing and collecting data from JavaScript-enabled pages.
+Our project focuses on gathering information about hiking routes from Komoot, a leading platform for outdoor enthusiasts. We employed a combination of web scraping tools and libraries in Python, including:
 
-To ensure efficient extraction and processing of data, we used Scrapy Spiders to automate website navigation, while Selenium facilitated interaction with dynamic content. Subsequently, we used BeautifulSoup to extract relevant information from the JavaScript-rendered pages. Additionally, we applied Python's regex and lambda functions to extract specific details from the collected dataset.
+- **Scrapy** for management and automation of the scraping process.
+- **Selenium** for interacting with dynamic web content.
+- **BeautifulSoup** for parsing and extracting data from JavaScript-enabled pages.
+- **Requests** for handling HTTP requests efficiently.
+- **Regex and lambda functions** for refining and processing extracted data.
 
-In summary, our project demonstrates our adeptness in gathering and analyzing hiking route information from online platforms, showcasing proficiency in web scraping techniques and data manipulation using Python.
+To ensure efficient extraction and processing, Scrapy Spiders were used to automate website navigation, while Selenium facilitated interaction with dynamic content. BeautifulSoup was then employed to parse and extract relevant information from JavaScript-rendered pages. 
 
-### Description detail:
-We can see in the Project Description.ipynb file
+### Key Features
+- Automated scraping of hiking routes.
+- Interaction with JavaScript-rendered content.
+- Data extraction, cleaning, and formatting using Python.
+- Structured dataset creation for further analysis.
+
+### Project Files
+- **Project Description.ipynb**: Detailed explanation of project workflow and implementation.
+- **scrapy_spiders/**: Contains Scrapy spider scripts for automating the scraping process.
+- **data/**: Folder containing extracted hiking route data.
+- **requirements.txt**: List of dependencies required for running the project.
+
+## Installation & Usage
+
+### Prerequisites
+- Python 3.x
+- Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Running the Scraper
+```bash
+scrapy crawl hikes_spider
+```
+
+## Future Improvements
+- Expanding to other regions on Komoot.
+- Implementing NLP for enhanced route recommendations.
+- Improving data storage and visualization.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
